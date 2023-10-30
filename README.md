@@ -68,6 +68,20 @@ Dessa forma seguimos a boa prática de utilizar o padrão DTO para representar o
 
 ## Aula 3: Validações flexíveis
 
+- Aplicar o padrão de projeto Strategy para isolar as validações de regras de negócio;
+- Aplicar o padrão de projeto Chain of Responsibility para utilizar todas as validações de maneira automática;
+- Utilizar padrões de projetos para isolar validações pode deixar o código mais flexível.
+
+### Outros padrões de projeto
+
+Neste curso foram abordados apenas alguns padrões de projeto que são comuns em uma API Rest, como os Padrões GoF (Gang of Four) Strategy e Chain of Responsibility, assim como os padrões DTO (Data Transfer Object) e Service. No entanto, existem muitos outros padrões de projeto disponíveis que podem expandir ainda mais o seu conhecimento e ajudá-lo a projetar sistemas mais flexíveis e escaláveis.
+
+Caso você tenha interesse em conhecer mais detalhes sobre os padrões utilizados no curso, bem como outros padrões que não foram abordados, você pode explorar alguns sites que explicam de maneira detalhada e com exemplos de códigos em Java. Os principais sites que indicamos são:
+
+- [Refactoring Guru](https://refactoring.guru/pt-br/design-patterns): Um excelente site com explicações detalhadas e exemplos de padrões de projeto, além de também ensinar bastante sobre refatoração de códigos;
+- [TutorialsPoint](https://tutorialspoint.com/design_pattern/index.htm): Oferece tutoriais abrangentes sobre padrões de projeto em Java;
+- [Repositório no GitHub](https://github.com/iluwatar/java-design-patterns): Um repositório que contém uma ampla coleção de implementações de padrões de projeto em Java.
+
 ## Aula 4: Otimizações na camada de persistência
 
 ## Aula 5: Desafios

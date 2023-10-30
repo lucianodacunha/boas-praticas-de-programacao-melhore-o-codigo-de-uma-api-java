@@ -11,6 +11,7 @@ import io.github.lucianodacunha.petapi.model.Tutor;
 import io.github.lucianodacunha.petapi.repository.AdocaoRepository;
 import io.github.lucianodacunha.petapi.repository.PetRepository;
 import io.github.lucianodacunha.petapi.repository.TutorRepository;
+import io.github.lucianodacunha.petapi.validation.SolicitacaoAdocaoValidation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,45 +21,22 @@ import java.util.List;
 
 @Service
 public class AdocaoService {
-
     @Autowired
     private AdocaoRepository adocaoRepository;
-
     @Autowired
     private PetRepository petRepository;
-
     @Autowired
     private TutorRepository tutorRepository;
+    @Autowired
     private EmailService emailService;
+    @Autowired
+    private List<SolicitacaoAdocaoValidation> validacoes;
 
     public void solicitar(SolicitacaoAdocaoDto dto){
         Pet pet = petRepository.getReferenceById(dto.idPet());
         Tutor tutor = tutorRepository.getReferenceById(dto.idTutor());
 
-        if (pet.getAdotado()) {
-            throw new RuntimeException("Pet já foi adotado!");
-        } else {
-            List<Adocao> adocoes = adocaoRepository.findAll();
-            for (Adocao a : adocoes) {
-                if (a.getTutor() == tutor && a.getStatus() == StatusAdocao.AGUARDANDO_AVALIACAO) {
-                    throw new ValidacaoException("Tutor já possui outra adoção aguardando avaliação!");
-                }
-            }
-            for (Adocao a : adocoes) {
-                if (a.getPet() == pet && a.getStatus() == StatusAdocao.AGUARDANDO_AVALIACAO) {
-                    throw new ValidacaoException("Pet já está aguardando avaliação para ser adotado!");
-                }
-            }
-            for (Adocao a : adocoes) {
-                int contador = 0;
-                if (a.getTutor() == tutor && a.getStatus() == StatusAdocao.APROVADO) {
-                    contador = contador + 1;
-                }
-                if (contador == 5) {
-                    throw new ValidacaoException("Tutor chegou ao limite máximo de 5 adoções!");
-                }
-            }
-        }
+        validacoes.forEach(v -> v.validar(dto));
 
         Adocao adocao = new Adocao();
         adocao.setData(LocalDateTime.now());
