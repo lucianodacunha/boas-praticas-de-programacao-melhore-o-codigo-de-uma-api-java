@@ -84,5 +84,11 @@ Caso você tenha interesse em conhecer mais detalhes sobre os padrões utilizado
 
 ## Aula 4: Otimizações na camada de persistência
 
+- Funcionam as convenções da JPA em relação ao mapeamento de entidades;
+- Mapear os relacionamentos entre entidades de maneira a evitar problemas de performance;
+- Realizar consultas otimizadas no banco de dados de maneira a evitar problemas de performance;
+- Simplificar o código das entidades com o uso de construtores e métodos de negócio.
+
 ## Aula 5: Desafios
 
+- Aplicar os conhecimentos adquiridos ao longo do curso nas outras funcionalidades do projeto.
